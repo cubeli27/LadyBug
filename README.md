@@ -1,6 +1,7 @@
 # LadyBug-v1.0
+This is still a work in progress I will publish the results afterwards.
 
-Revision needed.
+Revision is coming up.
 
 ![Alt text](png/LadyBug_3D.png)
 
