@@ -6,7 +6,11 @@ This will definitely be a redesign and this repo will serve as a reference for m
 2. "The output-enable (OE) input circuit is designed so that
 it is supplied by VCCA and when the (OE) input is low, all outputs are placed in the high-impedance state." and "The TXB0104 device is designed so the OE input
 circuit is supplied by VCCA."  Which led me to believ it is internally connected which is wrong and should be designed as such.
-3. SWDIO
+3. SWCLK pin 14, and SWDIO is pin 13 NOT 15
 4. A kill switch for the servos would be convenient.
 5. A switch for the Boot would be convenient.
 6. UART -> I2C , silkscreen wrong.
+7. FB wrong footprint
+8. 5v LDO  output cap should be bigger and input cap?
+9. Stiching Vias missing, maybe a good idea to add.
+10. 
