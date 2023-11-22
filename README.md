@@ -5,4 +5,4 @@ Revision is coming up.
 
 ![Alt text](png/LadyBug_3D.png)
 
-The assembled board and videos of tests, if interested, can be found on my Instagram. :blush:
+The assembled board and videos of tests, for those who are interested, can be found on my Instagram. :blush:
