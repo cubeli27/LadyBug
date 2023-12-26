@@ -22,6 +22,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "string.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -47,6 +48,8 @@ TIM_HandleTypeDef htim2;
 TIM_HandleTypeDef htim3;
 TIM_HandleTypeDef htim15;
 
+PCD_HandleTypeDef hpcd_USB_FS;
+
 /* USER CODE BEGIN PV */
 
 /* USER CODE END PV */
@@ -59,13 +62,53 @@ static void MX_TIM2_Init(void);
 static void MX_TIM3_Init(void);
 static void MX_TIM15_Init(void);
 static void MX_I2C1_Init(void);
+static void MX_USB_PCD_Init(void);
 /* USER CODE BEGIN PFP */
+void BugDead(void); // Legs just on the ground
+void BugStandUp(void); // Bug Stands Upright
+void BugStandLow(void); // Bug stands Low
+void BugLegsUp(void); // Bug lifts Legs Up
 
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+void BugDead(void)
+{
+	//Feet on the Floor
+	htim2.Instance->CCR1 = 70; // Left Back Foot Directly On Ground
+	htim2.Instance->CCR3 = 79; // Left Front Foot Directly On Ground
+	htim15.Instance->CCR2 = 75; // Right Front Foot Directly On Ground
+	htim1.Instance->CCR2 = 75; // Right Left Foot Directly On Ground
+	//Shoulder angle TODO
+}
+void BugStandUp(void)
+{
+	//Legs push the body up
+	htim2.Instance->CCR1 = 50; // LB foot
+	htim2.Instance->CCR3 = 99; // LF foot
+	htim15.Instance->CCR2 = 55; // RF foot
+	htim1.Instance->CCR2 = 95; // RB foot
+	//Shoulder Angle TODO
+}
+void BugStandLow(void)
+{
+	//Feet on the Floor
+	htim2.Instance->CCR1 = 67; // Left Back Foot Directly On Ground
+	htim2.Instance->CCR3 = 82; // Left Front Foot Directly On Ground
+	htim15.Instance->CCR2 = 72; // Right Front Foot Directly On Ground
+	htim1.Instance->CCR2 = 78; // Right Left Foot Directly On Ground
+	//Shoulder angle TODO
+}
+void BugLegsUp(void)
+{
+	// Legs of the floor and point up
+	htim2.Instance->CCR1 = 80; //
+	htim2.Instance->CCR3 = 69; //
+	htim15.Instance->CCR2 = 85; //
+	htim1.Instance->CCR2 = 65; //
+	//Shoulder Angle TODO
+}
 /* USER CODE END 0 */
 
 /**
@@ -101,6 +144,7 @@ int main(void)
   MX_TIM3_Init();
   MX_TIM15_Init();
   MX_I2C1_Init();
+  MX_USB_PCD_Init();
   /* USER CODE BEGIN 2 */
   //tim1
   HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);	//start		BRS
@@ -127,32 +171,16 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-		htim2.Instance->CCR1 = 75;  // duty cycle is .5 ms=75
-		htim2.Instance->CCR2 = 75;  // duty cycle is .5 ms
-		htim2.Instance->CCR3 = 75;  // duty cycle is .5 ms
-		htim2.Instance->CCR4 = 75;  // duty cycle is .5 ms
-		htim3.Instance->CCR1 = 75;  // duty cycle is .5 ms
-		htim3.Instance->CCR2 = 75;  // duty cycle is .5 ms
-		htim3.Instance->CCR3 = 75;  // duty cycle is .5 ms
-		htim3.Instance->CCR4 = 75;  // duty cycle is .5 ms
-		htim1.Instance->CCR1 = 75;  // duty cycle is .5 ms
-		htim1.Instance->CCR2 = 75;  // duty cycle is .5 ms
-		htim15.Instance->CCR1 = 75;  // duty cycle is .5 ms
-		htim15.Instance->CCR2 = 75;  // duty cycle is .5 ms
-		HAL_Delay(1000);
-		htim2.Instance->CCR1 = 90;  // duty cycle is 2.5 ms=125
-		htim2.Instance->CCR2 = 90;  // duty cycle is .5 ms
-		htim2.Instance->CCR3 = 90;  // duty cycle is 2.5 ms
-		htim2.Instance->CCR4 = 90;  // duty cycle is .5 ms
-		htim3.Instance->CCR1 = 90;  // duty cycle is 2.5 ms
-		htim3.Instance->CCR2 = 90;  // duty cycle is .5 ms
-		htim3.Instance->CCR3 = 90;  // duty cycle is 2.5 ms
-		htim3.Instance->CCR4 = 90;  // duty cycle is .5 ms
-		htim1.Instance->CCR1 = 90;  // duty cycle is 2.5 ms
-		htim1.Instance->CCR2 = 90;  // duty cycle is .5 ms
-		htim15.Instance->CCR1 = 90;  // duty cycle is 2.5 ms
-		htim15.Instance->CCR2 = 90;  // duty cycle is .5 ms
-		HAL_Delay(1000);
+	BugStandUp();
+	HAL_Delay(500);
+	BugStandLow();
+	HAL_Delay(500);
+	BugLegsUp();
+	HAL_Delay(500);
+	BugStandLow();
+	HAL_Delay(500);
+
+
   }
   /* USER CODE END 3 */
 }
@@ -195,8 +223,10 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
-  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_I2C1;
+  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_USB|RCC_PERIPHCLK_I2C1;
   PeriphClkInit.I2c1ClockSelection = RCC_I2C1CLKSOURCE_HSI;
+  PeriphClkInit.UsbClockSelection = RCC_USBCLKSOURCE_HSI48;
+
   if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
   {
     Error_Handler();
@@ -552,6 +582,38 @@ static void MX_TIM15_Init(void)
 }
 
 /**
+  * @brief USB Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_USB_PCD_Init(void)
+{
+
+  /* USER CODE BEGIN USB_Init 0 */
+
+  /* USER CODE END USB_Init 0 */
+
+  /* USER CODE BEGIN USB_Init 1 */
+
+  /* USER CODE END USB_Init 1 */
+  hpcd_USB_FS.Instance = USB;
+  hpcd_USB_FS.Init.dev_endpoints = 8;
+  hpcd_USB_FS.Init.speed = PCD_SPEED_FULL;
+  hpcd_USB_FS.Init.phy_itface = PCD_PHY_EMBEDDED;
+  hpcd_USB_FS.Init.low_power_enable = DISABLE;
+  hpcd_USB_FS.Init.lpm_enable = DISABLE;
+  hpcd_USB_FS.Init.battery_charging_enable = DISABLE;
+  if (HAL_PCD_Init(&hpcd_USB_FS) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN USB_Init 2 */
+
+  /* USER CODE END USB_Init 2 */
+
+}
+
+/**
   * @brief GPIO Initialization Function
   * @param None
   * @retval None
@@ -568,14 +630,14 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_3, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pin : PB3 */
-  GPIO_InitStruct.Pin = GPIO_PIN_3;
+  /*Configure GPIO pin : LED1_Pin */
+  GPIO_InitStruct.Pin = LED1_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+  HAL_GPIO_Init(LED1_GPIO_Port, &GPIO_InitStruct);
 
 /* USER CODE BEGIN MX_GPIO_Init_2 */
 /* USER CODE END MX_GPIO_Init_2 */
