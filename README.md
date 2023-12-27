@@ -27,7 +27,7 @@ This project showcases an embedded system built around the STM32F103RCT6TR micro
 
 1. **Clone the repository.**
    ```bash
-   git clone https://github.com/cubelic/LadyBug
+   git clone https://github.com/cubeli27/LadyBug
 
 ## Project Structure
 
@@ -36,7 +36,7 @@ This project showcases an embedded system built around the STM32F103RCT6TR micro
 - **Images:** Stores project-related images, organized into subdirectories for 3D designs, assembled PCBs, and testing phases.
 - **docs:** Documentation files, including the setup instructions in `INSTALL.md`.
 - **LICENSE:** Licensing information for the project.
-- **README.md:** The main documentation file providing an overview of the project, features, and contribution guidelines.
+- **README.md:** The main documentation file providing an overview of the project, and features.
 
 
 ## Sponsor Acknowledgment
