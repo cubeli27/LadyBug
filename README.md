@@ -48,7 +48,7 @@ This project showcases an embedded system built around the STM32F103RCT6TR micro
 
 I extend my heartfelt gratitude to PCBWay for their generous support and contribution to this project. Their commitment to fostering innovation and learning in PCB Design has been instrumental in making this endeavor possible. I am very pleased with the customer support every step of the way and even more with the quality of delivered printed circuit boards.
 <p align="left">
-  <img src="Images/image_67206913.JPG" alt="Image 1" width="60%">
+  <img src="Images/image_672069131.JPG" alt="Image 1" width="60%">
   <img src="https://github.com/cubeli27/LadyBug/assets/134604815/8978de7c-6bcc-40be-b4ff-5b680a61df90" alt="Sponsor Logo" width="20%">
 </p>
 
