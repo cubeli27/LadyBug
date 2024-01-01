@@ -33,13 +33,20 @@ This project showcases an embedded system built around the STM32F103RCT6TR micro
 1. **Clone the repository.**
    ```bash
    git clone https://github.com/cubeli27/LadyBug
+2. **Order your own LadyBug.**
+   
+   To manufacture your LadyBug, access the fabrication files in "PCB_Design/fabrication". I ordered the PCBs from PCBWay and handled the assembly myself.
+4. **Firmware:**
+
+   Start using LadyBug with the template project located in "Source_Code". 
 
 ## Project Structure
 
-- **PCB_Design:** Contains all files related to the PCB design, including Gerber files.
+- **3D_Model:** Stores the 3D printed part models. (Currently not available; actual models will be added in the future)
+- **Images:** Stores project-related images.
+- **LadyBug1.0-files:** Relevant documentation for the first prototype. (Note: Currently irrelevant and should be disregarded.)
+- **PCB_Design:** Contains PCB design-related files, including Gerber files necessary for manufacturing. 
 - **Source_Code:** Houses the source code for the embedded system project.
-- **Images:** Stores project-related images, organized into subdirectories for 3D designs, assembled PCBs, and testing phases.
-- **docs:** Documentation files, including the setup instructions in `INSTALL.md`.
 - **LICENSE:** Licensing information for the project.
 - **README.md:** The main documentation file providing an overview of the project, and features.
 
