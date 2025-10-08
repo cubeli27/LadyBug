@@ -2,7 +2,7 @@
  * This file is based on work by Philip Salmony, 2019, under the BSD 3-Clause License.
  * Original source: https://github.com/pms67/HadesFCS
  *
- * Modifications (c) 2024, Jure Cubelic 
+ * Modifications (c) 2023, Jure Cubelic 
  * 
  */
 /*
@@ -46,4 +46,5 @@ void PCA9685_SetMicros(PCA9685 *pca, uint8_t channel, uint16_t micros);
 void PCA9685_SetPWM(PCA9685 *pca, uint8_t channel, uint16_t on, uint16_t off);
 
 #endif
+
 
