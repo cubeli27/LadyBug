@@ -29,8 +29,8 @@ This project includes portions of code derived from work by **Philip Salmony (c)
 licensed under the BSD 3-Clause License.
 
 Those portions are limited to:
-- `Core/Src/bmi088.c`
-- `Core/Inc/bmi088.h`
+- `Core/Src/BMI088.c`
+- `Core/Inc/BMI088.h`
 - `Core/Src/pca9685.c`
 - `Core/Inc/pca9685.h`
 
