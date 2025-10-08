@@ -5,13 +5,7 @@
  * Modifications (c) 2024, Jure Cubelic 
  * 
  */
-/*
- * This file is based on work by Philip Salmony, 2019, under the BSD 3-Clause License.
- * Original source: https://github.com/pms67/HadesFCS
- *
- * Modifications (c) 2025, Jure Cubelic 
- * 
- */
+
 
 
 #include "BMI088.h"
