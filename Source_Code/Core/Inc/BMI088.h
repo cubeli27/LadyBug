@@ -1,3 +1,12 @@
+/*
+ * This file is based on work by Philip Salmony, 2019, under the BSD 3-Clause License.
+ * Original source: https://github.com/pms67/HadesFCS
+ *
+ * Modifications (c) 2025, Jure Cubelic 
+ * 
+ */
+
+
 #ifndef BMI088_H_
 #define BMI088_H_
 
