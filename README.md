@@ -15,6 +15,7 @@ This project showcases an embedded system built around the STM32F103RCT6TR micro
 
 - [Features](#features)
 - [Getting Started](#getting-started)
+- [Final Product](#final-product)
 - [Project Structure](#project-structure)
 - [Sponsor Acknowledgment](#sponsor-acknowledgment)
 - [License](#license)
@@ -39,6 +40,17 @@ This project showcases an embedded system built around the STM32F103RCT6TR micro
 4. **Firmware:**
 
    Start using LadyBug with the template project located in "Source_Code". 
+
+## Final Product
+
+Here is the complete LadyBug-v1.1 robot, featuring the assembled PCB, 3D-printed body, and fully integrated servo motors. This section showcases how the finished robot looks.
+
+<p align="center">
+  <img src="Images/finalresult.png" alt="LadyBug Fully Assembled" width="60%">
+</p>
+
+To see LadyBug in action, check out the video demonstration [here](https://youtube.com/shorts/0U5EO-w3WB0?si=tFpQQ-5Q2gVJXG-p).
+
 
 ## Project Structure
 
